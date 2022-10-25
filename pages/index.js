@@ -1,34 +1,9 @@
 import { Box, Button, Text, TextField, Image } from '@skynexui/components';
+import { Router, useRouter } from 'next/router';
+import { useState } from 'react';
 import appConfig from '../config.json';
 
-function GlobalStyle() {
-  return (
-    <style global jsx>{`
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        list-style: none;
-      }
-      body {
-        font-family: 'Open Sans', sans-serif;
-      }
-      /* App fit Height */ 
-      html, body, #__next {
-        min-height: 100vh;
-        display: flex;
-        flex: 1;
-      }
-      #__next {
-        flex: 1;
-      }
-      #__next > * {
-        flex: 1;
-      }
-      /* ./App fit Height */ 
-    `}</style>
-  );
-}
+
 
 function Titulo(props) {
   const Tag = props.tag || 'h1';
@@ -48,15 +23,18 @@ function Titulo(props) {
 
 
 export default function PaginaInicial() {
-  const username = 'MiguelFLima';
+  const [username, setUsername] = useState('MiguelFLima');
+  const router = useRouter();
+  const handleChange = (e) => {
+      setUsername(e.target.value)
+    }
 
   return (
     <>
-      <GlobalStyle />
       <Box
         styleSheet={{
           display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100%',
-          backgroundColor: appConfig.theme.colors.primary['300'],
+          backgroundColor: appConfig.theme.colors.primary['100'],
           backgroundImage: 'url(https://virtualbackgrounds.site/wp-content/uploads/2020/08/the-matrix-digital-rain.jpg)',
           backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundBlendMode: 'multiply',
         }}
@@ -79,6 +57,14 @@ export default function PaginaInicial() {
           {/* Formulário */}
           <Box
             as="form"
+            onSubmit={function (e) {
+              e.preventDefault()
+              if(username. length < 2) {
+                alert('O usuário precisa ter mais de dois caracteres!')
+              } else {
+                router.push('/chat')
+              }
+            }}
             styleSheet={{
               display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
               width: { xs: '100%', sm: '50%' }, textAlign: 'center', marginBottom: '32px',
@@ -91,6 +77,8 @@ export default function PaginaInicial() {
 
             <TextField
               fullWidth
+              value={username}
+              onChange={handleChange}
               textFieldColors={{
                 neutral: {
                   textColor: appConfig.theme.colors.neutrals[200],
