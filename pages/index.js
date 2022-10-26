@@ -1,5 +1,5 @@
 import { Box, Button, Text, TextField, Image } from '@skynexui/components';
-import { Router, useRouter } from 'next/router';
+import {useRouter } from 'next/router';
 import { useState } from 'react';
 import appConfig from '../config.json';
 
@@ -62,7 +62,12 @@ export default function PaginaInicial() {
               if(username. length < 2) {
                 alert('O usuário precisa ter mais de dois caracteres!')
               } else {
-                router.push('/chat')
+                router.push({
+                  pathname: ('/chat'),
+                  query: {
+                    user: username,
+                  }
+                })
               }
             }}
             styleSheet={{

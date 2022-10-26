@@ -3,7 +3,7 @@ aula 3:
     * Estado para a mensagem
     * Estado para a listaDeMensagens
     * handleNovaMensagem no on keyPress passando como argumento a mensagem setada no onChange
-    * handleNovaMensagem  criamos um objeto de mensagem tendo como propriedades (texto: novaMensagem(a que recebemos), id: listadeMensagens.length + 1, de: 'hardCode')
+    ## handleNovaMensagem  criamos um objeto de mensagem tendo como propriedades (texto: novaMensagem(a que recebemos), id: listadeMensagens.length + 1, de: 'hardCode')
     * setamos a lista de mensagens passando a mensagem que criamos (objeto) mais o spread de lista de mensagens
     * na hora de renderizar MessageList passamos como props mensagens={listaDeMensagens} que contem todas as nossas mensagens
 
@@ -17,3 +17,10 @@ aula 4:
     * Setando a listaDeMensagens com o data vindo do supabaseClient
     * Fazendo o função handleNovaMensagem funcionar, usando o metodo insert do supabaseClient inserindo a mensagem no supabase
     * Ainda na mesma função, além de inserir no supabase, nós damos o setListaDeMensagens passando o spread de lista + o que veio desse insert(data[0]), que são as propriedades e valores do objeto mensagem
+
+
+aula 5:
+    
+    * pegar o user atraves da url com router query
+    * implementar o componente de figurinhas
+    * chamar o handle nova mensagem passando como argumento o sticker
